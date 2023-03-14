@@ -1,0 +1,161 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;600&family=Irish+Grover&family=Open+Sans:ital,wght@0,300;1,300;1,400&family=Raleway:wght@700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+}
+
+header {
+  height: 750px;
+  max-height: 100vh;
+  background-color: black;
+  background-image: url("../assets/junks.jpeg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  position: relative;
+}
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15em 0 5em;
+  height: 64px;
+}
+header nav h3 {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.8em;
+  cursor: pointer;
+}
+header nav ul {
+  display: flex;
+  align-items: center;
+  gap: 5em;
+}
+header nav ul li {
+  transition: all 0.3s ease-in;
+  cursor: pointer;
+}
+header nav ul li:nth-child(1) {
+  color: orange;
+}
+header nav ul li:hover {
+  color: orange;
+}
+header .hero__header {
+  height: 90%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 5em;
+}
+header .hero__header p {
+  font-size: 15px;
+  letter-spacing: 0.3em;
+}
+header .hero__header h1 {
+  font-family: "Raleway", sans-serif;
+  font-size: 5em;
+  letter-spacing: 0.3em;
+  color: orange;
+}
+header .hero__header span {
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+  width: 60px;
+  height: 60px;
+  border: 4px solid orange;
+  border-radius: 50%;
+  background-color: white;
+}
+header .hero__header span img {
+  width: 100%;
+}
+header .chatbox__container {
+  display: none;
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  width: 320px;
+  height: 470px;
+  border: 1px solid #fff;
+}
+header .chatbox__container .chatbox__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: orange;
+  padding: 0 1.5em;
+  height: 61px;
+}
+header .chatbox__container .chatbox__header .chatbot__info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+header .chatbox__container .chatbox__header .chatbot__info span {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: white;
+}
+header .chatbox__container .chatbox__header .chatbot__info span img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+header .chatbox__container .chatbox__header .chatbot__info span div {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 8px;
+  height: 8px;
+  background-color: green;
+  border-radius: 50%;
+}
+header .chatbox__container .chatbox__header .close {
+  font-weight: 900;
+  font-size: 1.2em;
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  cursor: pointer;
+}
+header .chatbox__container .chatbox {
+  height: 70%;
+  background-color: #fff;
+}
+header .chatbox__container .chat-form-container {
+  padding: 20px 10px;
+  background-color: orange;
+}
+header .chatbox__container .chat-form-container form {
+  display: flex;
+  gap: 3px;
+}
+header .chatbox__container .chat-form-container form input[type=text] {
+  font-size: 16px;
+  padding: 5px;
+  height: 40px;
+  border: none;
+  flex: 1;
+}
+header .chatbox__container .chat-form-container form .btn {
+  cursor: pointer;
+  padding: 5px 15px;
+  border: 0;
+  font-size: 17px;
+}
+header .chatbox__container .chat-form-container form .btn i {
+  color: orange;
+}/*# sourceMappingURL=style.css.map */

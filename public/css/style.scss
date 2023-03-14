@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;600&family=Irish+Grover&family=Open+Sans:ital,wght@0,300;1,300;1,400&family=Raleway:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style-type: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+header {
+    height: 750px;
+    max-height: 100vh;
+    background-color: black;
+    background-image: url('../assets/junks.jpeg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    position: relative;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 15em 0 5em;
+        height: 64px;
+
+        h3{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1.8em;
+            cursor: pointer;
+        }
+
+        ul{
+            display: flex;
+            align-items: center;
+            gap: 5em;
+
+            li{
+                transition: all .3s ease-in;
+                cursor: pointer;
+            }
+
+            li:nth-child(1){
+                color: orange;
+            }
+
+            li:hover{
+                color: orange;
+            }
+        }
+    }
+
+    .hero__header{
+        height: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 5em;
+
+        p{
+            font-size: 15px;
+            letter-spacing: .3em;
+        }
+
+        h1{
+            font-family: 'Raleway', sans-serif;
+            font-size: 5em;
+            letter-spacing: .3em;
+            color: orange;
+        }
+
+        span{
+            position: absolute;
+            bottom: 3%;
+            right: 3%;
+            width: 60px;
+            height: 60px;
+            border: 4px solid orange;
+            border-radius: 50%;
+            background-color: white;
+
+            img{
+                width: 100%;
+            }
+        }
+
+        
+    }
+
+    .chatbox__container{
+        display: none;
+        position: absolute;
+        top: 15%;
+        right: 5%;
+        width: 320px;
+        height: 470px;
+        border: 1px solid #fff;
+
+        .chatbox__header{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: orange;
+            padding: 0 1.5em;
+            height: 61px;
+
+            .chatbot__info{
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                span{
+                    position: relative;
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                    background-color: white;
+    
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+
+                    div{
+                        position: absolute;
+                        bottom: 0;
+                        right: 0;
+                        width: 8px;
+                        height: 8px;
+                        background-color: green;
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            .close{
+                font-weight: 900;
+                font-size: 1.2em;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                cursor: pointer;
+            }
+        }
+
+        .chatbox{
+            height: 70%;
+            background-color: #fff;
+        }
+
+        .chat-form-container {
+            padding: 20px 10px;
+            background-color: orange;
+
+            form {
+                display: flex;
+                gap: 3px;
+
+                input[type='text'] {
+                    font-size: 16px;
+                    padding: 5px;
+                    height: 40px;
+                    border: none;
+                    flex: 1;
+                }
+
+                .btn {
+                    cursor: pointer;
+                    padding: 5px 15px;
+                    border: 0;
+                    font-size: 17px;
+        
+                    i{
+                        color: orange;
+                    }
+                }
+            }
+        }
+    }
+}
