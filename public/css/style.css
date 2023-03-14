@@ -80,19 +80,20 @@ header .hero__header span img {
   width: 100%;
 }
 header .chatbox__container {
-  display: none;
   position: absolute;
   top: 15%;
   right: 5%;
   width: 320px;
   height: 470px;
   border: 1px solid #fff;
+  border-radius: 8px;
 }
 header .chatbox__container .chatbox__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: orange;
+  border-radius: 7px 7px 0 0;
   padding: 0 1.5em;
   height: 61px;
 }
@@ -132,12 +133,42 @@ header .chatbox__container .chatbox__header .close {
   cursor: pointer;
 }
 header .chatbox__container .chatbox {
-  height: 70%;
+  height: 350px;
+  max-height: 70%;
+  background-color: #e6e9ff;
+  overflow-y: scroll;
+  padding: 30px;
+}
+header .chatbox__container .chatbox .message {
+  position: relative;
+  padding: 5px;
+  margin-bottom: 15px;
   background-color: #fff;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+}
+header .chatbox__container .chatbox .message .meta {
+  font-size: 14px;
+  font-weight: 900;
+  font-family: "Raleway", sans-serif;
+  color: orange;
+  margin-bottom: 5px;
+}
+header .chatbox__container .chatbox .message .text {
+  color: black;
+  margin-bottom: 5px;
+}
+header .chatbox__container .chatbox .message span {
+  position: absolute;
+  bottom: 3%;
+  right: 1.5%;
+  color: #777;
+  font-size: 11px;
 }
 header .chatbox__container .chat-form-container {
   padding: 20px 10px;
   background-color: orange;
+  border-radius: 0 0 7px 7px;
 }
 header .chatbox__container .chat-form-container form {
   display: flex;
@@ -148,7 +179,10 @@ header .chatbox__container .chat-form-container form input[type=text] {
   padding: 5px;
   height: 40px;
   border: none;
+  outline: none;
   flex: 1;
+  padding-left: 20px;
+  color: black;
 }
 header .chatbox__container .chat-form-container form .btn {
   cursor: pointer;
