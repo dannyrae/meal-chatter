@@ -80,10 +80,11 @@ header .hero__header span img {
   width: 100%;
 }
 header .chatbox__container {
+  display: none;
   position: absolute;
   top: 15%;
   right: 5%;
-  width: 320px;
+  width: 350px;
   height: 470px;
   border: 1px solid #fff;
   border-radius: 8px;
@@ -133,37 +134,38 @@ header .chatbox__container .chatbox__header .close {
   cursor: pointer;
 }
 header .chatbox__container .chatbox {
-  height: 350px;
+  height: 370px;
   max-height: 70%;
   background-color: #e6e9ff;
   overflow-y: scroll;
   padding: 30px;
 }
 header .chatbox__container .chatbox .message {
-  position: relative;
-  padding: 5px;
+  padding: 5px 5px 10px 5px;
   margin-bottom: 15px;
   background-color: #fff;
   border-radius: 5px;
   overflow-wrap: break-word;
 }
 header .chatbox__container .chatbox .message .meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 14px;
   font-weight: 900;
   font-family: "Raleway", sans-serif;
   color: orange;
   margin-bottom: 5px;
 }
+header .chatbox__container .chatbox .message .meta span {
+  color: #777;
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+}
 header .chatbox__container .chatbox .message .text {
   color: black;
-  margin-bottom: 5px;
-}
-header .chatbox__container .chatbox .message span {
-  position: absolute;
-  bottom: 3%;
-  right: 1.5%;
-  color: #777;
-  font-size: 11px;
+  font-size: 13px;
 }
 header .chatbox__container .chat-form-container {
   padding: 20px 10px;
@@ -192,4 +194,27 @@ header .chatbox__container .chat-form-container form .btn {
 }
 header .chatbox__container .chat-form-container form .btn i {
   color: orange;
+}
+
+@media screen and (max-width: 70em) {
+  header {
+    background-position: left bottom;
+  }
+  header nav {
+    padding: 0 7em 0 5em;
+  }
+  header nav h3 {
+    font-size: 1.5em;
+  }
+  header nav ul {
+    gap: 3em;
+  }
+  header .chatbox__container {
+    top: 12%;
+    height: 550px;
+  }
+  header .chatbox__container .chatbox {
+    height: 450px;
+    max-height: 74.1%;
+  }
 }/*# sourceMappingURL=style.css.map */

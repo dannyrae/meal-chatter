@@ -28,33 +28,33 @@ header {
         padding: 0 15em 0 5em;
         height: 64px;
 
-        h3{
+        h3 {
             font-family: 'Open Sans', sans-serif;
             font-size: 1.8em;
             cursor: pointer;
         }
 
-        ul{
+        ul {
             display: flex;
             align-items: center;
             gap: 5em;
 
-            li{
+            li {
                 transition: all .3s ease-in;
                 cursor: pointer;
             }
 
-            li:nth-child(1){
+            li:nth-child(1) {
                 color: orange;
             }
 
-            li:hover{
+            li:hover {
                 color: orange;
             }
         }
     }
 
-    .hero__header{
+    .hero__header {
         height: 90%;
         position: relative;
         display: flex;
@@ -63,19 +63,19 @@ header {
         justify-content: center;
         padding-left: 5em;
 
-        p{
+        p {
             font-size: 15px;
             letter-spacing: .3em;
         }
 
-        h1{
+        h1 {
             font-family: 'Raleway', sans-serif;
             font-size: 5em;
             letter-spacing: .3em;
             color: orange;
         }
 
-        span{
+        span {
             position: absolute;
             bottom: 3%;
             right: 3%;
@@ -85,24 +85,25 @@ header {
             border-radius: 50%;
             background-color: white;
 
-            img{
+            img {
                 width: 100%;
             }
         }
 
-        
+
     }
 
-    .chatbox__container{
+    .chatbox__container {
+        display: none;
         position: absolute;
         top: 15%;
         right: 5%;
-        width: 320px;
+        width: 350px;
         height: 470px;
         border: 1px solid #fff;
         border-radius: 8px;
 
-        .chatbox__header{
+        .chatbox__header {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -111,25 +112,25 @@ header {
             padding: 0 1.5em;
             height: 61px;
 
-            .chatbot__info{
+            .chatbot__info {
                 display: flex;
                 align-items: center;
                 gap: 5px;
 
-                span{
+                span {
                     position: relative;
                     width: 35px;
                     height: 35px;
                     border-radius: 50%;
                     background-color: white;
-    
-                    img{
+
+                    img {
                         width: 100%;
                         height: 100%;
                         object-fit: contain;
                     }
 
-                    div{
+                    div {
                         position: absolute;
                         bottom: 0;
                         right: 0;
@@ -141,7 +142,7 @@ header {
                 }
             }
 
-            .close{
+            .close {
                 font-weight: 900;
                 font-size: 1.2em;
                 width: 25px;
@@ -151,41 +152,44 @@ header {
             }
         }
 
-        .chatbox{
-            height: 350px;
+        .chatbox {
+            height: 370px;
             max-height: 70%;
             background-color: #e6e9ff;
             overflow-y: scroll;
             padding: 30px;
-            
+
             .message {
-                position: relative;
-                padding: 5px;
+                padding: 5px 5px 10px 5px;
                 margin-bottom: 15px;
                 background-color: #fff;
                 border-radius: 5px;
                 overflow-wrap: break-word;
 
                 .meta {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                     font-size: 14px;
                     font-weight: 900;
                     font-family: 'Raleway', sans-serif;
                     color: orange;
                     margin-bottom: 5px;
+
+                    span {
+                        color: #777;
+                        font-family: 'Inter', sans-serif;
+                        font-size: 11px;
+                        font-weight: bold;
+                    }
                 }
 
-                .text{
+                .text {
                     color: black;
-                    margin-bottom: 5px;
+                    font-size: 13px;
                 }
 
-                span {
-                    position: absolute;
-                    bottom: 3%;
-                    right: 1.5%;
-                    color: #777;
-                    font-size: 11px;
-                }
+                
             }
         }
 
@@ -214,8 +218,8 @@ header {
                     padding: 5px 15px;
                     border: 0;
                     font-size: 17px;
-        
-                    i{
+
+                    i {
                         color: orange;
                     }
                 }
@@ -224,6 +228,30 @@ header {
     }
 }
 
-@media screen {
+@media screen and (max-width: 70em) {
+    header {
+        background-position: left bottom;
+
+        nav {
+            padding: 0 7em 0 5em;
     
+            h3 {
+                font-size: 1.5em;
+            }
+    
+            ul {
+                gap: 3em;
+            }
+        }
+
+        .chatbox__container {
+            top: 12%;
+            height: 550px;
+
+            .chatbox{
+                height: 450px;
+                max-height: 74.1%;
+            }
+        }
+    }
 }
