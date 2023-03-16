@@ -13,13 +13,17 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-app.use(session({
-  secret: 'my-secret',
-  resave: false,
-  saveUninitialized: true
-}));
-
 const io = socketio(server);
+
+const sessionMiddleware = session({
+  secret: "secret-key",
+  resave: false,
+  saveUninitialized: true,
+  cookie: {
+    secure: false,
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+  },
+});
 
 const fastFoods = {
   2: "Pizza",
@@ -34,11 +38,18 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html')
 })
 
+io.use((socket, next) => {
+  sessionMiddleware(socket.request, socket.request.res, next);
+});
+
 io.on('connection', socket => {
   console.log('User connected')
 
+  const deviceId = socket.handshake.headers["user-agent"]
+
   let userName = "";
   socket.session = socket.request.session;
+  console.log(socket.session)
 
   socket.emit('bot', 'What is your name?')
 

@@ -217,4 +217,33 @@ header .chatbox__container .chat-form-container form .btn i {
     height: 450px;
     max-height: 74.1%;
   }
+}
+@media screen and (max-width: 40em) {
+  header nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3em;
+    padding: 0 1.5em;
+  }
+  header nav h3 {
+    font-size: 1em;
+  }
+  header nav ul {
+    gap: 2em;
+  }
+  header .hero__header {
+    padding-left: 1em;
+  }
+  header .hero__header p {
+    font-size: 13px;
+    letter-spacing: 0.3em;
+  }
+  header .hero__header h1 {
+    font-size: 3.1em;
+    letter-spacing: 0.2em;
+  }
+  header .hero__header span {
+    bottom: 8%;
+    right: 8%;
+  }
 }/*# sourceMappingURL=style.css.map */
