@@ -4,14 +4,18 @@ const close = document.querySelector('.chatbox__container .close')
 const icon = document.querySelector('.chat-icon')
 const modal = document.querySelector('.chatbox__container')
 
+const deviceId = 'web-' + Math.random().toString(36).substring(2, 15)
+const storedMessages = JSON.parse(localStorage.getItem('chat-messages')) || []
+
+
 // Connect to Socket.io
 const socket = io({ withCredentials: true })
 
 // Listening to message from server
 socket.on('bot', (message) => {
   setTimeout(() => {
-    outputMessage(message, 'Danny')
-  }, "3000")
+    outputMessage(message, 'Support-Bot')
+  }, "1000")
 })
 
 
@@ -28,7 +32,7 @@ chatForm.addEventListener('submit', (e) => {
   outputMessage(msg, 'You')
   socket.emit('customer', msg)
 
-  chatMessages.scrollTop = chatMessages.scrollHeight
+  // chatMessages.scrollTop = chatMessages.scrollHeight
 
   // Clear input
   e.target.elements.msg.value = ''
@@ -59,6 +63,8 @@ function outputMessage(message, sender) {
   para.innerText = message
   div.appendChild(para)
   chatMessages.appendChild(div)
+
+  chatMessages.scrollTop = chatMessages.scrollHeight
 }
 
 close.addEventListener('click', () => {

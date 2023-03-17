@@ -10,6 +10,11 @@
   font-family: "Inter", sans-serif;
 }
 
+body {
+  position: relative;
+  height: 100vh;
+}
+
 header {
   height: 750px;
   max-height: 100vh;
@@ -18,7 +23,6 @@ header {
   background-repeat: no-repeat;
   background-size: contain;
   background-position: right;
-  position: relative;
 }
 header nav {
   display: flex;
@@ -79,7 +83,8 @@ header .hero__header span {
 header .hero__header span img {
   width: 100%;
 }
-header .chatbox__container {
+
+.chatbox__container {
   display: none;
   position: absolute;
   top: 15%;
@@ -89,7 +94,7 @@ header .chatbox__container {
   border: 1px solid #fff;
   border-radius: 8px;
 }
-header .chatbox__container .chatbox__header {
+.chatbox__container .chatbox__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -98,25 +103,25 @@ header .chatbox__container .chatbox__header {
   padding: 0 1.5em;
   height: 61px;
 }
-header .chatbox__container .chatbox__header .chatbot__info {
+.chatbox__container .chatbox__header .chatbot__info {
   display: flex;
   align-items: center;
   gap: 5px;
 }
-header .chatbox__container .chatbox__header .chatbot__info span {
+.chatbox__container .chatbox__header .chatbot__info span {
   position: relative;
   width: 35px;
   height: 35px;
   border-radius: 50%;
   background-color: white;
 }
-header .chatbox__container .chatbox__header .chatbot__info span img {
+.chatbox__container .chatbox__header .chatbot__info span img {
   width: 100%;
   height: 100%;
   -o-object-fit: contain;
      object-fit: contain;
 }
-header .chatbox__container .chatbox__header .chatbot__info span div {
+.chatbox__container .chatbox__header .chatbot__info span div {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -125,7 +130,7 @@ header .chatbox__container .chatbox__header .chatbot__info span div {
   background-color: green;
   border-radius: 50%;
 }
-header .chatbox__container .chatbox__header .close {
+.chatbox__container .chatbox__header .close {
   font-weight: 900;
   font-size: 1.2em;
   width: 25px;
@@ -133,21 +138,21 @@ header .chatbox__container .chatbox__header .close {
   text-align: center;
   cursor: pointer;
 }
-header .chatbox__container .chatbox {
+.chatbox__container .chatbox {
   height: 370px;
   max-height: 70%;
   background-color: #e6e9ff;
   overflow-y: scroll;
   padding: 30px;
 }
-header .chatbox__container .chatbox .message {
+.chatbox__container .chatbox .message {
   padding: 5px 5px 10px 5px;
   margin-bottom: 15px;
   background-color: #fff;
   border-radius: 5px;
   overflow-wrap: break-word;
 }
-header .chatbox__container .chatbox .message .meta {
+.chatbox__container .chatbox .message .meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,26 +162,26 @@ header .chatbox__container .chatbox .message .meta {
   color: orange;
   margin-bottom: 5px;
 }
-header .chatbox__container .chatbox .message .meta span {
+.chatbox__container .chatbox .message .meta span {
   color: #777;
   font-family: "Inter", sans-serif;
   font-size: 11px;
   font-weight: bold;
 }
-header .chatbox__container .chatbox .message .text {
+.chatbox__container .chatbox .message .text {
   color: black;
   font-size: 13px;
 }
-header .chatbox__container .chat-form-container {
+.chatbox__container .chat-form-container {
   padding: 20px 10px;
   background-color: orange;
   border-radius: 0 0 7px 7px;
 }
-header .chatbox__container .chat-form-container form {
+.chatbox__container .chat-form-container form {
   display: flex;
   gap: 3px;
 }
-header .chatbox__container .chat-form-container form input[type=text] {
+.chatbox__container .chat-form-container form input[type=text] {
   font-size: 16px;
   padding: 5px;
   height: 40px;
@@ -186,13 +191,13 @@ header .chatbox__container .chat-form-container form input[type=text] {
   padding-left: 20px;
   color: black;
 }
-header .chatbox__container .chat-form-container form .btn {
+.chatbox__container .chat-form-container form .btn {
   cursor: pointer;
   padding: 5px 15px;
   border: 0;
   font-size: 17px;
 }
-header .chatbox__container .chat-form-container form .btn i {
+.chatbox__container .chat-form-container form .btn i {
   color: orange;
 }
 
@@ -209,11 +214,11 @@ header .chatbox__container .chat-form-container form .btn i {
   header nav ul {
     gap: 3em;
   }
-  header .chatbox__container {
+  .chatbox__container {
     top: 12%;
     height: 550px;
   }
-  header .chatbox__container .chatbox {
+  .chatbox__container .chatbox {
     height: 450px;
     max-height: 74.1%;
   }
@@ -245,5 +250,17 @@ header .chatbox__container .chat-form-container form .btn i {
   header .hero__header span {
     bottom: 8%;
     right: 8%;
+  }
+  .chatbox__container {
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100%;
+    border-radius: 0;
+  }
+  .chatbox__container .chatbox__header {
+    border-radius: 0;
   }
 }/*# sourceMappingURL=style.css.map */

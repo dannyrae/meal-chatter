@@ -1,29 +1,22 @@
 const express = require('express')
 const http = require('http')
 const socketio = require('socket.io')
-const session = require('express-session')
+const sessionMiddleware = require('./middlewares/sessionMiddleware')
 require('dotenv').config()
 
 const app = express()
 const PORT = process.env.PORT
 
-const server = http.createServer(app);
+const server = http.createServer(app)
+const io = socketio(server)
 
+// middlewares
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
-const io = socketio(server);
-
-const sessionMiddleware = session({
-  secret: "secret-key",
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    secure: false,
-    maxAge: 1000 * 60 * 60 * 24 * 7,
-  },
-});
+// session middleware
+app.use(sessionMiddleware)
 
 const fastFoods = {
   2: "Pizza",
@@ -47,7 +40,7 @@ io.on('connection', socket => {
 
   const deviceId = socket.handshake.headers["user-agent"]
 
-  let userName = "";
+  let user = "";
   socket.session = socket.request.session;
   console.log(socket.session)
 
@@ -56,12 +49,12 @@ io.on('connection', socket => {
   socket.on("customer", (message) => {
     console.log("Customer message received:", message);
 
-    if (!userName) {
-      userName = message;
-      socket.session.username = userName
+    if (!user) {
+      user = message;
+      socket.session.user = user
       socket.emit(
         "bot",
-        `Welcome to the Meal-Chatter, ${userName}!\n
+        `Welcome to the Meal-Chatter, ${user}!\n
           What would you like to do today?\n
           Select 1 to Place an order\n
           Select 99 to checkout order\n
