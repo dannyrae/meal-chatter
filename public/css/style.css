@@ -16,7 +16,7 @@ body {
 }
 
 header {
-  height: 750px;
+  height: 100%;
   max-height: 100vh;
   background-color: black;
   background-image: url("../assets/junks.jpeg");
@@ -237,27 +237,26 @@ header .hero__header span img {
     gap: 2em;
   }
   header .hero__header {
-    padding-left: 1em;
+    padding-left: 1.5em;
   }
   header .hero__header p {
     font-size: 13px;
     letter-spacing: 0.3em;
   }
   header .hero__header h1 {
-    font-size: 3.1em;
-    letter-spacing: 0.2em;
+    font-size: 3.2em;
+    letter-spacing: 0.3em;
   }
   header .hero__header span {
     bottom: 8%;
     right: 8%;
   }
   .chatbox__container {
-    top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     border-radius: 0;
   }
   .chatbox__container .chatbox__header {
