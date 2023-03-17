@@ -88,7 +88,6 @@ io.on('connection', socket => {
             socket.emit(
               "bot",
               `${selectedItem} has been added to your order. Do you want to add more items to your order or proceed to checkout?\n
-              What would you like to do today?\n
               Input 1 to Place an order\n
               Input 99 to checkout order\n
               Input 98 to see order history\n

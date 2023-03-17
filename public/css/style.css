@@ -256,6 +256,7 @@ header .hero__header span img {
     right: 8%;
   }
   .chatbox__container {
+    position: fixed;
     top: 0;
     right: 0;
     left: 0;
