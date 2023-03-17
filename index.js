@@ -54,13 +54,14 @@ io.on('connection', socket => {
       socket.session.user = user
       socket.emit(
         "bot",
-        `Welcome to the Meal-Chatter, ${user}!\n
+        `Hello ${user}!\n
+          Welcome to the Meal-Chatter
           What would you like to do today?\n
-          Select 1 to Place an order\n
-          Select 99 to checkout order\n
-          Select 98 to see order history\n
-          Select 97 to see current order\n
-          Select 0 to cancel order
+          Input 1 to Place an order\n
+          Input 99 to checkout order\n
+          Input 98 to see order history\n
+          Input 97 to see current order\n
+          Input 0 to cancel order
         `
       );
     } else {
@@ -86,10 +87,22 @@ io.on('connection', socket => {
             socket.session.currentOrder.push(selectedItem);
             socket.emit(
               "bot",
-              `${selectedItem} has been added to your order. Do you want to add more items to your order? Type numbers. If not, type 99 to checkout.`
+              `${selectedItem} has been added to your order. Do you want to add more items to your order or proceed to checkout?\n
+              What would you like to do today?\n
+              Input 1 to Place an order\n
+              Input 99 to checkout order\n
+              Input 98 to see order history\n
+              Input 97 to see current order\n
+              Input 0 to cancel order.`
             );
           } else {
-            socket.emit("bot", "Invalid selection.");
+            socket.emit("bot",
+              `Invalid selection. <br>
+              Input 1 to Place an order\n
+              Input 99 to checkout order\n
+              Input 98 to see order history\n
+              Input 97 to see current order\n
+              Input 0 to cancel order.`);
           }
           break;
         case "99":
@@ -98,7 +111,7 @@ io.on('connection', socket => {
             socket.session.currentOrder.length
           ) {
             orderHistory.push(socket.session.currentOrder);
-            socket.emit("bot", "Order placed");
+            socket.emit("bot", "Order placed \nStaus: Pending...");
             delete socket.session.currentOrder;
           } else {
             socket.emit(
@@ -110,11 +123,11 @@ io.on('connection', socket => {
         case "98":
           if (orderHistory.length) {
             const orderHistoryString = orderHistory
-              .map((order, index) => `Order ${index + 1}: ${order.join(", ")}`)
+              .map((order, index) => `Order ${index + 1}: ${order.join(", ")} `)
               .join("\n");
             socket.emit(
               "bot",
-              `Here is your order history:\n${orderHistoryString}`
+              `Here is your order history: \n${orderHistoryString} `
             );
           } else {
             socket.emit("bot", "No previous orders");
@@ -129,8 +142,9 @@ io.on('connection', socket => {
               "bot",
               `Here is your current order: ${socket.session.currentOrder.join(
                 ", "
-              )}
-                  Type 99 to checkout your order or 0 to cancel.`
+              )
+              }
+                  Type 99 to checkout your order, 1 to see menu or 0 to cancel.`
             );
           } else {
             socket.emit(
@@ -154,7 +168,13 @@ io.on('connection', socket => {
           }
           break;
         default:
-          socket.emit("bot", "Invalid selection.");
+          socket.emit("bot",
+            `Invalid selection. <br>
+            Input 1 to Place an order\n
+            Input 99 to checkout order\n
+            Input 98 to see order history\n
+            Input 97 to see current order\n
+            Input 0 to cancel order.`);
           break;
       }
     }
