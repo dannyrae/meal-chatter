@@ -1,3 +1,4 @@
+const { Console } = require("console");
 const session = require("express-session")
 require('dotenv').config()
 
@@ -7,14 +8,10 @@ const sessionMiddleware = session({
     resave: false,
     saveUninitialized: true,
     cookie: {
+        secure: true,
         maxAge: 1000 * 60 * 60 * 24 * 7,
+        domain: process.env.COOKIE_DOMAIN
     }
 });
-
-if (process.env.NODE_ENV === "production") {
-	sessionMiddleware.cookie.secure = true;
-	sessionMiddleware.cookie.httpOnly = true;
-	sessionMiddleware.cookie.domain = process.env.COOKIE_DOMAIN;
-}
 
 module.exports = sessionMiddleware;
