@@ -43,7 +43,11 @@ The chatbot is designed to seamlessly integrate with a restaurant's existing sys
 ![Javascript][javascript]
 ![Node.js][node]
 ![Express.js][express]
-![MongoDB][mongodb]
+![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
+![SASS](https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![Render](https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
 </div>
 
@@ -57,49 +61,27 @@ The chatbot is designed to seamlessly integrate with a restaurant's existing sys
 
 <strong>Requirements for the examination project</strong>
 
-- [x] Users should have a first_name, last_name, email, password,
+- [x] ChatBot interface would be like a chat interface
 
-- [x] A user should be able to sign up and sign in into the blog app
+- [x] It should be able to store user session based on devices
 
-- [x] Use JWT as authentication strategy and expire the token after 1 hour
+- [x] When a customer lands on the chatbot page, the bot should send these options to the customer:
+  Select 1 to Place an order
+  Select 99 to checkout order
+  Select 98 to see order history
+  Select 97 to see current order
+  Select 0 to cancel order
 
-- [x] A blog can be in two states; draft and published
+- [x] When a customer selects “1”, the bot should return a list of items from the restaurant.
 
-- [x] Logged in and not logged in users should be able to get a list of published blogs created
+- [x] When a customer selects “99” out an order, the bot should respond with “order placed” and if none the bot should respond with “No order to place”. Customer should also see an option to place a new order
 
-- [x] Logged in and not logged in users should be able to to get a published blog
+- [x] When a customer selects “98”, the bot should be able to return all placed order
 
-- [x] Logged in users should be able to create a blog.
+- [x] When a customer selects “97”, the bot should be able to return current order
 
-- [x] When a blog is created, it is in draft state
+- [x] When a customer selects “0”, the bot should cancel the order if there is.
 
-- [x] The owner of the blog should be able to update the state of the blog to published
-
-- [x] The owner of a blog should be able to edit the blog in draft or published state
-
-- [x] The owner of the blog should be able to delete the blog in draft or published state
-
-- [x] The owner of the blog should be able to get a list of their blogs.
-
-- [x] The endpoint should be paginated
-
-- [x] It should be filterable by state
-
-- [x] Blogs created should have title, description, tags, author, timestamp, state, read_count, reading_time and body.
-
-- [x] The list of blogs endpoint that can be accessed by both logged in and not logged in users should be paginated:
-
-  - [x] default it to 20 blogs per page.
-
-  - [x] It should also be searchable by author, title and tags.
-
-  - [x] It should also be orderable by read_count, reading_time and timestamp
-
-- [x] When a single blog is requested, the api should return the user information (the author) with the blog. The read_count of the blog too should be updated by 1
-
-- [x] Come up with any algorithm for calculating the reading_time of the blog.
-
-- [x] Write tests for all endpoints
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -112,12 +94,11 @@ The chatbot is designed to seamlessly integrate with a restaurant's existing sys
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/download/)
-- [MongoDB](https://www.mongodb.com/docs/manual/installation/)
 
 #### Clone this repo
 
 ```sh
-git clone https://github.com/dannyrae/blog-app.git
+git clone https://github.com/dannyrae/meal-chatter.git
 ```
 
 #### Install project dependencies
@@ -126,7 +107,7 @@ git clone https://github.com/dannyrae/blog-app.git
 npm install
 ```
 
-#### Update .env with [example.env](https://github.com/dannyrae/blog-app/blob/main/example.env)
+#### Update .env with [example.env](https://github.com/dannyrae/meal-chatter/blob/main/example.env)
 
 #### Run a development server
 
@@ -134,292 +115,8 @@ npm install
 npm run dev
 ```
 ## Base URL
-- [danny-blog-app.cyclic.app/](https://danny-blog-app.cyclic.app/)
+- [meal-chatter.onrender.com](https://meal-chatter.onrender.com/)
 
-### Models
-
-#### User
-
-| field     | data_type     | constraints      |
-| --------- | ------------- | ---------------- |
-| username  | string        | required, unique |
-| firstname | string        | required         |
-| lastname  | string        | required         |
-| email     | string        | required, unique |
-| password  | string        | required         |
-| blogs  | ref - Blog |                  |
-
-#### Blog
-
-| field        | data_type  | constraints                                              |
-| ------------ | ---------- | -------------------------------------------------------- |
-| title        | string     | required, unique                                         |
-| description  | string     |                                                 |
-| author       | ref - User |                                                          |
-| owner        | string     |                                                          |
-| state        | string     | default: 'draft', enum: ['draft', 'published'] |
-| read_count   | Number     | default: 0                                               |
-| reading_time | Number     |                                                          |
-| tags         | array      | optional                                                 |
-| body         | string     | required                                                 |
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-## Apis
-
-### Signup User
-
-- Route: /signup
-- Method: POST
-
-:point_down: Body
-
-```json
-{
-  "firstname": "John",
-  "lastname": "Doe",
-  "username": "mightyjoe",
-  "email": "joe@mail.com",
-  "password": "Password0!"
-}
-```
-
-:point_down: Response
-
-```json
-{
-  "status": "success",
-  "data": {
-    "firstName": "John",
-    "lastName": "Doe",
-    "username": "mightyjoe",
-    "email": "joe@mail.com",
-    "blogs": [],
-    "_id": "6367c296ba7522bd8561e4f6"
-  }
-}
-```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Login User
-
-- Route: /login
-- Method: POST
-
-:point_down: Body
-
-```json
-{
-  "username": "mightyjoe",
-  "password": "Password0!"
-}
-```
-
-:point_down: Response
-
-```json
-{
-  "token": { token },
-  "username": "mightyjoe",
-  "firstname": "John"
-}
-```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Create a Blog
-
-- Route: /api/create
-- Method: POST
-- Header
-  - Authorization: Bearer {token}
-
-:point_down: Body
-
-```json
-{
-  "title": "The Adventures of John",
-  "tags": ["memoirs", "expose", "fun"],
-  "description": "Fun times as Johnny",
-  "body": "A very fun article that is long enough to be fun, and short enough to be ..fun!"
-}
-```
-
-:point_down: Response
-
-```json
-{
-    "status": true,
-    "data": {
-        "title": "The Adventures of John",
-        "description": "Fun times as Johnny",
-        "author": "6366ffdbb47b721083375dc2",
-        "state": "draft",
-        "read_count": 0,
-        "tags": ["memoirs", "expose", "fun"],
-        "body": "A very fun article that is long enough to be fun, and short enough to be ..fun!",
-        "_id": "636810c3e7aaaa457745b150",
-        "createdAt": "2022-11-06T19:50:40.705Z",
-        "updatedAt": "2022-11-06T19:50:40.705Z",
-        "reading_time": 1
-    }
-}
-```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Get all published blogs
-
-- Route: /api/
-- Method: GET
-- Header
-  - Authorization: Bearer {token}
-  - None (Accessible to unauthenticated users)
-- Query params:
-
-  - page (default: 1)
-  - size (default: 20)
-
-  - Filters: Limit returned response by passing values to any of the following parameters:
-
-    - author
-    ```text
-    /api/blog?author=Author
-    ```
-    - title
-    ```text
-    /api/blog?title=Title
-    ```
-    - tags: Separate multiple values with a comma 
-    ```text
-    /api/blog?tags=sql,database
-    ```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Get all created blogs by authenticated user
-
-- Route: /api/user/
-- Method: GET
-- Header
-  - Authorization: Bearer {token}
-- Query params:
-
-  - page (default: 1)
-  - size (default: 20)
-
-  - Filters: Limit returned response by passing values to any of the following parameters:
-
-    - state
-    ```text
-    /api/blog?state=draft
-    ```
-
-    ```text
-    /api/blog?state=published
-    ```
-
-    - title
-    ```text
-    /api/blog?title=Title
-    ```
-    - tags: Separate multiple values with a comma 
-    ```text
-    /api/blog?tags=sql,database
-    ```
-    
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Update the state of a Blog
-
-- Route: /api/:blogId
-- Method: PATCH
-- Header
-  - Authorization: Bearer {token}
-
-:point_down: Body
-
-```json
-{
-  "state": "published"
-}
-```
-
-:point_down: Response
-
-```json
-{
-  "status": "success",
-  "data": {
-    "_id": "6367cc2271c384885108032f",
-    "title": "The Adventures of John",
-    "description": "Fun times as Johnny",
-    "author": "6367c296ba7522bd8561e4f6",
-    "state": "published",
-    "read_count": 0,
-    "tags": ["memoirs", "expose", "fun"],
-    "body": "A very fun article that is long enough to be fun, and short enough to be ..fun!",
-    "createdAt": "2022-11-06T15:00:50.202Z",
-    "updatedAt": "2022-11-06T16:17:45.137Z",
-    "reading_time": 1
-  }
-}
-```
-
-<p align="right"><a href="#readme-top">back to top</a></p>
-
----
-
-### Update the contents of a Blog
-
-- Route: /api/:blogId
-- Method: PATCH
-- Header
-  - Authorization: Bearer {token}
-
-:point_down: Body
-
-```json
-{
-  "tags": ["memoirs", "expose"],
-  "body": "A very fun article that is long enough to be fun, and short enough to be ..fun! A sailor went to sea to see what he could see but all that he could see was the bottom of the deep blue sea."
-}
-```
-
-:point_down: Response
-
-```json
-{
-  "status": "success",
-  "data": {
-    "_id": "6367cc2271c384885108032f",
-    "title": "The Adventures of John",
-    "description": "Fun times as Johnny",
-    "author": "6367c296ba7522bd8561e4f6",
-    "state": "published",
-    "read_count": 0,
-    "tags": ["memoirs", "expose"],
-    "body": "A very fun article that is long enough to be fun, and short enough to be ..fun! A sailor went to sea to see what he could see but all that he could see was the bottom of the deep blue sea.",
-    "createdAt": "2022-11-06T15:00:50.202Z",
-    "updatedAt": "2022-11-06T16:22:29.326Z",
-    "reading_time": 1
-  }
-}
-```
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -429,15 +126,8 @@ npm run dev
 
 While building this project, I learned about:
 
-- Testing the backend
-- Database Modelling
-- Database Management
-- Debugging
-- User Authentication
-- User Authorization
-- Mongoose populate & ref
-
-<p align="right"><a href="#readme-top">back to top</a></p>
+- Socket io
+- Session storage
 
 ---
 
@@ -445,7 +135,7 @@ While building this project, I learned about:
 
 ## License
 
-Distributed under the MIT License. See <a href="https://github.com/dannyrae/blog-app/blob/main/LICENSE.md">LICENSE</a> for more information.
+Distributed under the MIT License. See <a href="https://github.com/dannyrae/meal-chatter/blob/main/LICENSE.md">LICENSE</a> for more information.
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -455,10 +145,11 @@ Distributed under the MIT License. See <a href="https://github.com/dannyrae/blog
 
 ## Contact
 
+- Portfolio - [dannyrae.me](https://dannyrae.me)
 - Twitter - [@_emmanueldan](https://twitter.com/_emmanueldan)
 - email - emmanueldan0920@gmail.com
 
-Project Repo Link: [Blog App](https://github.com/dannyrae/blog-app)
+Project Repo Link: [Meal Chatter](https://github.com/dannyrae/meal-chatter)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -471,10 +162,9 @@ Project Repo Link: [Blog App](https://github.com/dannyrae/blog-app)
 This project was made possible by:
 
 - [AltSchool Africa School of Engineering](https://altschoolafrica.com/schools/engineering)
-- [Full Stack open 2022](https://fullstackopen.com/en/)
-- [Othneil Drew's README Template](https://github.com/othneildrew/Best-README-Template)
+- [NetGuru's chatbot UI](https://www.netguru.com/services)
+- [Brad Traversy](https://github.com/brad-traversy)
 - [Ileriayo's Markdown Badges](https://github.com/Ileriayo/markdown-badges)
-- [Daniel's pizza app Readme Template](https://github.com/daniel-alts/pizza_app/blob/main/README.md)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -482,19 +172,18 @@ This project was made possible by:
 - Emmanuel Asuquo
 <!-- Markdown Links & Images -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/dannyrae/blog-app.svg?style=for-the-badge
-[contributors-url]: https://github.com/dannyrae/blog-app/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/dannyrae/blog-app.svg?style=for-the-badge
-[forks-url]: https://github.com/dannyrae/blog-app/network/members
-[stars-shield]: https://img.shields.io/github/stars/dannyrae/blog-app.svg?style=for-the-badge
-[stars-url]: https://github.com/dannyrae/blog-app/stargazers
-[issues-shield]: https://img.shields.io/github/issues/dannyrae/blog-app.svg?style=for-the-badge
-[issues-url]: https://github.com/dannyrae/blog-app/issues
-[license-shield]: https://img.shields.io/github/license/dannyrae/blog-app.svg?style=for-the-badge
-[license-url]: https://github.com/dannyrae/blog-app/blob/main/LICENSE.md
+[contributors-shield]: https://img.shields.io/github/contributors/dannyrae/meal-chatter.svg?style=for-the-badge
+[contributors-url]: https://github.com/dannyrae/meal-chatter/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/dannyrae/meal-chatter.svg?style=for-the-badge
+[forks-url]: https://github.com/dannyrae/meal-chatter/network/members
+[stars-shield]: https://img.shields.io/github/stars/dannyrae/meal-chatter.svg?style=for-the-badge
+[stars-url]: https://github.com/dannyrae/meal-chatter/stargazers
+[issues-shield]: https://img.shields.io/github/issues/dannyrae/meal-chatter.svg?style=for-the-badge
+[issues-url]: https://github.com/dannyrae/meal-chatter/issues
+[license-shield]: https://img.shields.io/github/license/dannyrae/meal-chatter.svg?style=for-the-badge
+[license-url]: https://github.com/dannyrae/meal-chatter/blob/main/LICENSE.md
 [twitter-shield]: https://img.shields.io/badge/-@dannyrae-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white&link=https://twitter.com/_emmanueldan
 [twitter-url]: https://twitter.com/_emmanueldan
 [javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1C
 [node]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
 [express]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
-[mongodb]: https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white
