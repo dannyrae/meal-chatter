@@ -4,7 +4,7 @@
   "description": "A restaurant chatbot that helps customers order meals",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
+    "start": "NODE_ENV=production node index",
     "dev": "nodemon index"
   },
   "repository": {
