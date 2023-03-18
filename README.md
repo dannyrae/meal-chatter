@@ -181,7 +181,7 @@ This project was made possible by:
 [issues-shield]: https://img.shields.io/github/issues/dannyrae/meal-chatter.svg?style=for-the-badge
 [issues-url]: https://github.com/dannyrae/meal-chatter/issues
 [license-shield]: https://img.shields.io/github/license/dannyrae/meal-chatter.svg?style=for-the-badge
-[license-url]: https://github.com/dannyrae/meal-chatter/blob/main/LICENSE.md
+[license-url]: https://github.com/dannyrae/meal-chatter/blob/main/LICENSE
 [twitter-shield]: https://img.shields.io/badge/-@dannyrae-1ca0f1?style=for-the-badge&logo=twitter&logoColor=white&link=https://twitter.com/_emmanueldan
 [twitter-url]: https://twitter.com/_emmanueldan
 [javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1C
